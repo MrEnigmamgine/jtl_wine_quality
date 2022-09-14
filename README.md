@@ -97,9 +97,23 @@ What does the data represent? }
 {How was the data prepared for exploration?  Was any data fabricated through imputing or resampling?}
 
 ## Data Dictionary
+---
+| **Variable Name** | **Explanation** | **Unit** | **Values** |
+| :---: | :---: | :---: | :---: |
+| Fixed Acidity |  Acids that do not evaporate readily (Tartaric Acid) | g/L | Float |
+| Volatile Acidity | Acids evaporate readily (Acetic acid) | g/L | Float |
+| Citric Acid | level of Citric acid | g/L | Float |
+| Residual Sugar | Sugar that remains after fermenation | g/L | Float |
+| Chlorides | Sodium Chloride content | g/L | Float |
+| Free Sulfur Dioxide | Levels of free, gaseous sulfur dioxide | mg/L | Float |
+| Total Sulfur Dioxide | Total Level of Sulfur Dioxide | mg/L | Float |
+| Density | Density in relation to water | g/cm^3 | Float |
+| pH| Acidity of the wine | 1-14 | Float |
+| Sulphates | Level of potassium sulfate | g/L | Float |
+| Alcohol | Alcohol by Volume per wine | ABV% | Float |
+| Quality |  Mean Wine quality score by experts | 1-10 | Integer |
 
-Fixed Acidity - Acids that do not evaporate readily
-Volitile acidity - Acids evaporate readily
+ - 
 Quality - The median value of at least 3 indepenent evualations by a wine quality expert
 
 # Project Planning <a name="plan"></a>
