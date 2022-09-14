@@ -111,10 +111,9 @@ What does the data represent? }
 | pH| Acidity of the wine | 1-14 | Float |
 | Sulphates | Level of potassium sulfate | g/L | Float |
 | Alcohol | Alcohol by Volume per wine | ABV% | Float |
-| Quality |  Mean Wine quality score by experts | 1-10 | Integer |
+| Quality |  The median value of at least 3 independent evualations by wine experts| 1-10 | Integer |
 
- - 
-Quality - The median value of at least 3 indepenent evualations by a wine quality expert
+
 
 # Project Planning <a name="plan"></a>
 
