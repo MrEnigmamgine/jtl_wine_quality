@@ -29,17 +29,19 @@ By {your_name}
 {Describe the use case or business context that is the driver behind the project}
 
 > __Agile Story__  
-    As a {persona}  
-    I want {feature}  
-    So that {goal}  
+    As a `wine producer`  
+    I want `predictions of wine quality`  
+    So that `I can make better wine`  
 
 ## Goals
 
-{Translate the scenario into a more technical description. "Use machine learning to predict X value within Y margin of error"}
+- MVP Goal : Predict quality score using simple regession model using existing features. RMSE ~1
 
 ### Deliverables
 
-{What artifacts, if any, are expected as a result of this project.}
+- CodeUP Quality README file
+- Report notebook
+- Slide-driven presentation
 
 ## Reproducing this project
 
@@ -96,7 +98,20 @@ What does the data represent? }
 
 ## Data Dictionary
 
+Fixed Acidity - Acids that do not evaporate readily
+Volitile acidity - Acids evaporate readily
+Quality - The median value of at least 3 indepenent evualations by a wine quality expert
+
 # Project Planning <a name="plan"></a>
+
+Our project makes use of [Trello](https://trello.com/invite/b/QJuhQCLq/e6f31d6c42f14e6e43ac38b3d6775e58/winequality) to manage the individual steps and backlong of the project.
+
 
 ## Initial Hypotheses
 
+- Sugar and alcohol content directly to correlates to wine density
+- For white wines, the higher acid content the higher quality
+- For red wines, residual sugar content lowers quality score
+- Sulfates will have negative impact on quality for both
+- High volitile acid content lowers quality for both
+- White and red wines may need predicted separately
