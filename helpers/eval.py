@@ -51,7 +51,7 @@ def regression_metrics(actual: pd.Series, predicted: pd.Series) -> dict:
         'sum_squared_error' : sum_of_squared_errors,
         'mean_squared_error' : metrics.mean_squared_error(actual, predicted),
         'root_mean_squared_error' : metrics.mean_squared_error(actual, predicted, squared=False),
-        'mean_aboslute_error' : metrics.mean_absolute_error(actual, predicted),
+        'mean_absolute_error' : metrics.mean_absolute_error(actual, predicted),
         'r2_score' : metrics.r2_score(actual, predicted, force_finite=False)
     }
 
