@@ -20,7 +20,7 @@ class BaselineModel:
     def fit(self, x, y):
         """Calculates the baseline for the target variable and assigns it to this instance."""
         if len(y.shape) == 1:
-            self.baseline = y.agg(func=self.method)[0]
+            self.baseline = pd.Series(y.agg(func=self.method))[0]
             self.baseline_proba = (y == self.baseline).mean()
         else:
              raise ValueError('Expected a 1 dimensional array.')

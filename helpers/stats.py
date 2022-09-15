@@ -1,3 +1,5 @@
+import pandas as pd
+
 def anova_variance_in_target_for_cat(df, target, cat, alpha=0.05):
     """Quickly test a target against the categories in another column."""
     from scipy.stats import f_oneway
@@ -67,7 +69,7 @@ def spearman_correllation_test(df, x, y, alpha=0.05):
     }
     return result
 
-def person_correllation_test(df, x, y, alpha=0.05):
+def pearson_correllation_test(df, x, y, alpha=0.05):
     from scipy.stats import pearsonr
 
     stat, p = pearsonr(df[x], df[y])
