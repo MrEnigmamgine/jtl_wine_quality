@@ -56,3 +56,18 @@ def regression_metrics(actual: pd.Series, predicted: pd.Series) -> dict:
     }
 
     return error_metrics
+
+
+def plot_residuals(actual, predicted):
+    """Plots the residuals of a model's predictions."""
+    import matplotlib.pyplot as plt
+    yhat = predicted
+    resid_p = actual - yhat
+
+    fig, ax1 = plt.subplots(1, 1, constrained_layout=True, sharey=True, figsize=(7,4))
+    ax1.set_title('Predicted Residuals')
+    ax1.set_ylabel('Error')
+    ax1.set_xlabel('Predicted Value')
+    ax1.ticklabel_format(useOffset=False, style='plain')
+    ax1.scatter(x=yhat, y=resid_p)
+    plt.show()
