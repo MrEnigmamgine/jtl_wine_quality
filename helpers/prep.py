@@ -33,3 +33,22 @@ def upsample_target(df, target, val):
                                 )
     #Then glue the upsample to the original
     return pd.concat([minority_upsample, df[df[target]!=val]])
+
+
+def train_scaler(df, kind='min_max'):
+    """Quickly build a scaler without worrying about importing the right thing.
+    Will fit to the entire dataframe so you should only pass the columns you wish to scale."""
+    match kind:
+        case 'min_max':
+            from sklearn.preprocessing import MinMaxScaler
+            scaler = MinMaxScaler()
+        case 'robust':
+            from sklearn.preprocessing import RobustScaler
+            scaler = RobustScaler()
+    scaler.fit(df)
+    return scaler
+
+def scale_df(df, scaler):
+    """Same as scaler.transform(), but returns a dataframe with index and columns preserved."""
+    X = pd.DataFrame(scaler.transform(df), index=df.index, columns=df.columns )
+    return X

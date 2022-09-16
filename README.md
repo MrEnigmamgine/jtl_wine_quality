@@ -86,7 +86,9 @@ What does the data represent? }
 
 ## Scope
 
-{ How many records/columns? How many nulls? Does this project focus on a particular subset of the overall data? }
+The dataset includes 6,497 observations. 0 of which contain nulls and 1,177 of which are duplicates.
+
+5320 observations remain after cleaning, 1359 of which are red wines and 3961 of which are white wines.
 
 ## Acquiring
 
