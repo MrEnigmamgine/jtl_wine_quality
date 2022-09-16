@@ -34,6 +34,7 @@ def red_get_data():
         url = gdrive_url(ids['red'])
         download(url, path)
     df = pd.read_csv(path, delimiter=';')
+    df = df.drop_duplicates()
     return df
 
 
@@ -43,6 +44,7 @@ def white_get_data():
         url = gdrive_url(ids['white'])
         download(url, path)
     df = pd.read_csv(path, delimiter=';')
+    df = df.drop_duplicates()
     return df
 
 def both_get_data():
@@ -56,4 +58,5 @@ def both_get_data():
         df.to_csv(path, index=False)
     else:
         df = pd.read_csv(path)
+        df = df.drop_duplicates()
     return df
