@@ -1,3 +1,5 @@
+import pandas as pd
+
 def anova_variance_in_target_for_cat(df, target, cat, alpha=0.05):
     """Quickly test a target against the categories in another column."""
     from scipy.stats import f_oneway
@@ -67,7 +69,7 @@ def spearman_correllation_test(df, x, y, alpha=0.05):
     }
     return result
 
-def person_correllation_test(df, x, y, alpha=0.05):
+def pearson_correllation_test(df, x, y, alpha=0.05):
     from scipy.stats import pearsonr
 
     stat, p = pearsonr(df[x], df[y])
@@ -92,3 +94,51 @@ def shapiro_gausian_test(s, alpha=0.05):
         'alpha': alpha
     }
     return result
+
+def all_the_stats(df, override_categorical=[], override_numerical=[]):
+    # Initialize the dictionary that will be iteratively built
+    out = {}
+    # Separate columns into categorical and numerical
+    coltype = get_column_types(df, override_categorical=override_categorical)
+    
+    # Loop through each categorical column
+    for col in coltype['cat']:
+        if len(df[col].value_counts()) > 1:
+            cold = out[col] = {}
+            
+            # Run a chi2 test on every other categorical column
+            this = cold['chi2'] = {}
+            for target in coltype['cat']:
+                if len(df[target].value_counts()) > 1:
+                    if target != col:
+                        this[target] = chi2_test(df[col], df[target])
+            # Run an anova test on every numerical column
+            this = cold['anova'] = {}
+            for target in coltype['num']:
+                if target != col:
+                    anova = this[target] = anova_variance_in_target_for_cat(df, target, col)
+                    # If we reject the null run a ttest to determine which categories are significant
+                    if anova['reject'] == True:
+                        anova['ttest'] = ttest_target_for_each_cat(df, target, col)
+
+    # The loop through each numerical column
+    for col in coltype['num']:
+        
+        cold = out[col] = {}
+        
+        # Repeat the Anova tests on each categorical column for readability
+        this = cold['anova'] = {}
+        for target in coltype['cat']:
+            if len(df[target].value_counts()) > 1:
+                if target != col:
+                    anova = this[target] = anova_variance_in_target_for_cat(df, col, target)
+                    if anova['reject'] == True:
+                        anova['ttest'] = ttest_target_for_each_cat(df, col, target)
+
+        # Run a correlation test for every other numerical column
+        this = cold['spearmanr'] = {}
+        for target in coltype['num']:
+            if target != col:
+                this[target] = spearman_correllation_test(df, target, col)
+
+    return out
