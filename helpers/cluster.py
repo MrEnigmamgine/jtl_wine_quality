@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 SEED = 8
 
-def build_kmeans_clusterer(df, cols, k):
+def build_kmeans_clusterer(df, cols, k, random_state=SEED):
     from sklearn.cluster import KMeans
-    clusterer = KMeans(n_clusters=k)
+    clusterer = KMeans(n_clusters=k, random_state=random_state)
     clusterer.fit(df[cols])
     return clusterer
 
