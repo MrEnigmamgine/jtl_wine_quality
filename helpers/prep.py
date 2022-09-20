@@ -38,13 +38,14 @@ def upsample_target(df, target, val):
 def train_scaler(df, kind='min_max'):
     """Quickly build a scaler without worrying about importing the right thing.
     Will fit to the entire dataframe so you should only pass the columns you wish to scale."""
-    match kind:
-        case 'min_max':
-            from sklearn.preprocessing import MinMaxScaler
-            scaler = MinMaxScaler()
-        case 'robust':
-            from sklearn.preprocessing import RobustScaler
-            scaler = RobustScaler()
+    if kind == 'min_max':
+        from sklearn.preprocessing import MinMaxScaler
+        scaler = MinMaxScaler()
+    elif kind == 'robust':
+        from sklearn.preprocessing import RobustScaler
+        scaler = RobustScaler()
+    else:
+        raise Exception('Invalid kind parameter. Expected one of ["min_max","robust"]')
     scaler.fit(df)
     return scaler
 
