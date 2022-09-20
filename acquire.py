@@ -58,5 +58,6 @@ def both_get_data():
         df.to_csv(path, index=False)
     else:
         df = pd.read_csv(path)
-        df = df.drop_duplicates()
+    df = df.reset_index().drop(columns='index')
+    df = df.drop_duplicates()
     return df
