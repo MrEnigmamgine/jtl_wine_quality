@@ -137,4 +137,4 @@ def add_features():
     red['additives']=red['chlorides']+red['sulphates']+red['residual_sugar']+red['total_sulfur_dioxide']-red['free_sulfur_dioxide']
     white['additives']=white['chlorides']+white['sulphates']+white['residual_sugar']+white['total_sulfur_dioxide']-white['free_sulfur_dioxide']
     
-    return df
+    return red, white
