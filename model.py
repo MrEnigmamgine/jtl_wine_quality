@@ -122,3 +122,19 @@ def drop_outliers(df, dataset, method='iqr', **kwargs):
     else: raise Exception('Invalid method supplied. Use "manual" or "iqr".')
 
     return df
+
+def add_features():
+    
+    #'ions'= combo of chlorides and sulfates
+    red['ions'] = red['chlorides']+red['sulphates']
+    white['ions']= white['chlorides']+white['sulphates']
+    
+    # 'hydronium' = ‘H+’ which is a derivative of pH where pH = -log[H3O+ concentration]
+    red['hydronium'] = 10**(-red['ph'])
+    white['hydronium']= 10**(-white['ph'])
+    
+    #combo of chlorides, sulfates, residual sugar, and free/total sulfur dioxide
+    red['additives']=red['chlorides']+red['sulphates']+red['residual_sugar']+red['total_sulfur_dioxide']-red['free_sulfur_dioxide']
+    white['additives']=white['chlorides']+white['sulphates']+white['residual_sugar']+white['total_sulfur_dioxide']-white['free_sulfur_dioxide']
+    
+    return df
