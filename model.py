@@ -88,7 +88,7 @@ def drop_outliers(df, dataset, method='iqr', **kwargs):
                 'citric_acid'           : 1.25,
                 'residual_sugar'        : 26,
                 'chlorides'             : .250, 
-                'volatile_acidity'      : 690,
+                'volatile_acidity'      : .690,
                 'free_sulfur_dioxide'   : 200,
                 'total_sulfur_dioxide'  : 200,
                 'density'               : 1,
