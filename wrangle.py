@@ -4,6 +4,7 @@ import pandas as pd
 
 import acquire
 from helpers.util import make_valid_py_id
+from helpers.prep import train_test_validate_split
 
 SEED = 13
 
@@ -31,7 +32,10 @@ def wrangle_data(dataset):
 
     return df
 
-
+def wrangle_data_and_split(dataset, seed=SEED):
+    df = wrangle_data(dataset)
+    train, validate, test = train_test_validate_split(df, seed=seed)
+    return train, validate, test
 
 def split(df, target_var, seed=SEED):
     '''
