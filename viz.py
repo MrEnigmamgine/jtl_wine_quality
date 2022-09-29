@@ -1,5 +1,13 @@
+import pandas as pd
+import numpy as np
+
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+wine_colors = ['#efdaa3', '#8c0f0a']
+alt_white = '#eccd13'
+wine_palette = sns.color_palette(wine_colors)
+wine_palette_r = sns.color_palette(list(reversed(wine_colors)))
 
 def abv_boxen_by_quality(df):
     plt.figure(figsize=[10,5])
@@ -38,3 +46,17 @@ def not_eu_legal(row):
         if 35 < sugar and so2 > 400: 
             return not legal
     return legal
+
+def regplot_compare(train, x, y):
+    fig, axes = plt.subplots(1,2, sharey=True,sharex=True, figsize=[8,4])
+    sns.regplot(x=x, y=y, data=train[train.type =='white'],
+                x_estimator=np.mean, logx=True,
+                color= alt_white, label='White', ax=axes[0],
+                )
+    sns.regplot(x=x, y=y, data=train[train.type =='red'],
+                x_estimator=np.mean, logx=True,
+                color= wine_colors[1], label='Red', ax=axes[1]
+                )
+    fig.legend()
+    fig.suptitle(f'{y.capitalize()} / {x.capitalize()} comparison')
+    plt.show()
