@@ -131,6 +131,9 @@ def add_features(df):
     # 'hydronium' = ‘H+’ which is a derivative of pH where pH = -log[H3O+ concentration]
     df['hydronium'] = 10**(-df['ph'])
     
+    # Bound sulfur dioxides: a measure of total sulfur dioxide minus free sulfur dioxide
+    df['bound_sulfur_dioxide'] = df['total_sulfur_dioxide']-df['free_sulfur_dioxide']
+    
     #combo of chlorides, sulfates, residual sugar, and free/total sulfur dioxide
     df['additives']=df['chlorides']+df['sulphates']+df['residual_sugar']+df['total_sulfur_dioxide']-df['free_sulfur_dioxide']
     
