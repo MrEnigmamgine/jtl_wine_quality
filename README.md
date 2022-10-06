@@ -1,5 +1,6 @@
-# Title
-By {your_name}
+# Predicting the Quality Score of Wine Using Machine Learning
+By: [Luis Arce](https://github.com/LuisVArce)
+, [Tim Keriazes](https://github.com/tim-keriazes), [Joshua Mayes](https://github.com/MrEnigmamgine)
 
 ## Readme Outline
 - [Project Description](#project_desc)  
@@ -24,9 +25,9 @@ By {your_name}
 
 # About the project <a name="project_desc"></a>
 
-## Scenario
+## Red Wine From the Vihno Verde Region in Portugal - Predicting the Quality Score Using Machine Learning
 
-{Describe the use case or business context that is the driver behind the project}
+{Our project examines 11 quantitative features of red/white wine data sets from the Vihno Verde region of Portugal. Using the physicochemical features/breakdown of the wine, we built a predictive machine learning model with a target variable of quality score. Our insights, discoveries, and modeling offer a distinct advantage to wine producers/stakeholders/distributors by using a wine's chemical composition and predicting its associated quality score.}
 
 > __Agile Story__  
     As a `wine producer`  
@@ -40,7 +41,7 @@ By {your_name}
 ### Deliverables
 
 - CodeUP Quality README file
-- Report notebook
+- Final Report Notebook
 - Slide-driven presentation
 
 ## Reproducing this project
@@ -81,8 +82,7 @@ Dependencies can be installed quickly with just a few lines of code.
 
 # About the data
 
-{What is the source of the data?
-What does the data represent? }
+{Our data is sourced from data.world}
 
 ## Scope
 
@@ -92,11 +92,11 @@ The dataset includes 6,497 observations. 0 of which contain nulls and 1,177 of w
 
 ## Acquiring
 
-{Describe how the data is acquired. Provide sources and links.  Were any additonal technologies or scripts used? List them here.}
+{Both the red and white wine data sets were pulled as .csv files from data.world. }
 
 ## Preparing
 
-{How was the data prepared for exploration?  Was any data fabricated through imputing or resampling?}
+{The acquired data was in relatively good condition. We checked for nulls, reformatted the features to be more python friendly, and found a decent portion of duplicate data that we had to remove}
 
 ## Data Dictionary
 ---
@@ -113,7 +113,10 @@ The dataset includes 6,497 observations. 0 of which contain nulls and 1,177 of w
 | pH| Acidity of the wine | 1-14 | Float |
 | Sulphates | Level of potassium sulfate | g/L | Float |
 | Alcohol | Alcohol by Volume per wine | ABV% | Float |
-| Quality |  The median value of at least 3 independent evualations by wine experts| 1-10 | Integer |
+| Quality |  The median value of at least 3 independent evualations by wine experts| 1-10 | Integer | 
+| Ions |  The aggregations of ions | g/L | Float |
+| Hydronium |  Reverse engineered pH to a continuous variable| mol/L | Float |
+|  Additives |  An aggregation of all the additives in the dataset| g/L | Float |
 
 
 
@@ -130,3 +133,16 @@ Our project makes use of [Trello](https://trello.com/invite/b/QJuhQCLq/e6f31d6c4
 - Sulfates will have negative impact on quality for both
 - High volitile acid content lowers quality for both
 - White and red wines may need predicted separately
+
+## Final Results Summary
+- The polynomial regressor was the best performing model on both the red and the white wine data sets
+- Following the evaluation and extensive modeling, we narrowed down the feature set to the following: ['volatile_acidity','citric_acid','density','alcohol','ions','hydronium','additives']
+- We established baselines for use in the model using the mean quality score on the red wine set, and the median quality score on the white wine set.
+- We evaluated our models performance using RMSE:
+    - Red Wine: on the test set of .738 beating the RMSE on the baseline of .816 by .078
+    - White Wine: on the test set of .838 beating the RMSE on the baseline of .893 by .055
+
+## Next Steps
+- We would like to look at determining which features were the best features and adjusting accordingly. We found that the features we selected for final modeling yielded the greatest improvement in RMSE versus baseline, but potentially another combination of features/clusters could prove valueable. .
+- We would love to increase our data set size and feature set size, potentially exploring things like vintage year, type of grape, fermentation time, or any other details on the wine making process in general.
+
