@@ -1,5 +1,6 @@
 # Predicting the Quality Score of Wine Using Machine Learning
-By {Luis Arce, Tim Keriazes, and Joshua Mayes}
+By: [Luis Arce](https://github.com/LuisVArce)
+, [Tim Keriazes](https://github.com/tim-keriazes), [Joshua Mayes](https://github.com/MrEnigmamgine)
 
 ## Readme Outline
 - [Project Description](#project_desc)  
