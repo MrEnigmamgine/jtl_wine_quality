@@ -112,7 +112,10 @@ The dataset includes 6,497 observations. 0 of which contain nulls and 1,177 of w
 | pH| Acidity of the wine | 1-14 | Float |
 | Sulphates | Level of potassium sulfate | g/L | Float |
 | Alcohol | Alcohol by Volume per wine | ABV% | Float |
-| Quality |  The median value of at least 3 independent evualations by wine experts| 1-10 | Integer | Ions |  The aggregations of ions | g/L | Float | Hydronium |  Reverse engineered pH to a continuous variable| mol/L | Float | Additives |  An aggregation of all the additives in the dataset| g/L | Float |
+| Quality |  The median value of at least 3 independent evualations by wine experts| 1-10 | Integer | 
+| Ions |  The aggregations of ions | g/L | Float |
+| Hydronium |  Reverse engineered pH to a continuous variable| mol/L | Float |
+|  Additives |  An aggregation of all the additives in the dataset| g/L | Float |
 
 
 
